@@ -1,0 +1,95 @@
+.accordion {
+  margin-bottom: 10px;
+}
+
+.accordion h1 button:hover {
+  background-color: #0d6dfd38;
+}
+
+.accordion h1 button {
+  background-color: rgba(190, 190, 190, 0.253);
+  border-radius: 10px;
+}
+
+.accordion h1 button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.controlDesc {
+  text-align: justify;
+}
+
+.nivelCol {
+  width: 10%;
+}
+
+.dudaCol {
+  width: auto;
+}
+
+.codigoCol {
+  width: 10%;
+}
+
+.normDisabled {
+  color: grey;
+}
+
+#tablaCatalogoUSFs .editarCol,
+#tablaCatalogoPreguntas .editarCol {
+  width: 10%;
+}
+
+.IDCol {
+  width: 5%;
+}
+
+.relacionCol {
+  width: 13%;
+}
+
+.estado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.abierto {
+  background-color: #e74c3c;
+}
+
+.cerrado {
+  background-color: #27ae60;
+}
+
+.editarColRelaciones {
+  width: 10%;
+}
+
+.red {
+  color: #e74c3c;
+}
+
+#crearMas {
+  margin-left: 10px;
+}
+
+#suggestionsDominio {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsDominio li:hover {
+  background-color: rgb(219, 219, 219);
+}

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Módulo EAS</title>
+    <?php getheader("Módulo EAS", false) ?>
+    <link rel="stylesheet" href="./css/styleEAS.css">
+    <link rel="stylesheet" href="./css/styleLoading.css">
+    <link rel="stylesheet" href="./css/tags.css">
+    <script type="module" src="./js/modules/easModule.js" type="text/javascript" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/easModule.js", true)) ?>" crossorigin="anonymous"></script>
+    <script src="./js/simple-tags.js"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class="container pag-EAS">
+        <div class="Suscripciones">
+            <div class='col-12 response mb-3 EVS'>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="Revisiones nav-link active pointer" data-bs-toggle="tab" href="#analisis" id="RevisionesTab">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link suscripciones" data-bs-toggle="tab" href="#suscripciones">Suscriptions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link issues-tab" data-bs-toggle="tab" href="#issues">Issues</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content" id="moduleContent">
+                <div class="tab-pane fade suscripciones content" id="suscripciones">
+                    <div class="tablaSuscripciones row justify-content-end">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <h3 class="minititle">Clouds</h3>
+                        </div>
+                        <div class="col-md-6 loading3PSBia d-flex justify-content-end align-items-center">
+                            <div class="spinner-animation position-relative" id="loadingClouds">
+                                <svg class="spinner-a" height="60" viewBox="0 0 66 66" width="60">
+                                    <circle class="spinner-circle" cx="33" cy="33" fill="none" r="30" stroke-width="3" stroke="#0d6efd"></circle>
+                                </svg>
+                                <div class="position-absolute top-50 start-50 translate-middle">
+                                    <span class="numeroRealizadas realizadas porcentaje" id="realizadasLlamadas">0</span><span class="porcentaje">/</span><span class="numeroLlamadas llamadas porcentaje" id="totalLlamadas">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12-md mt-5">
+                            <div class="col-sm d-flex justify-content-end">
+                                <button class="btn btn-primary btn-relSus moduloInfo btn-spacer">Link Suscriptions</button>
+                            </div>
+                            <table class="table-11cert table-striped table-hover table-responsive-md tabla-especial mshide"
+                                id="tablaClouds">
+                                <thead>
+                                    <tr>
+                                        <th data-column-id="Linked" data-header-css-class="LinkedCol trTable" id="Linked">Linked</th>
+                                        <th data-column-id="id" data-header-css-class="IDCol trTable" data-identifier="true" id="id">Account ID
+                                        </th>
+                                        <th data-column-id="nombreTenant" data-header-css-class="TenantCol" id="nombreTenant">
+                                            Tenant</th>
+                                        <th data-column-id="Nombre" data-header-css-class="NombreCol trTable" id="Nombre">
+                                            Name</th>
+                                        <th data-column-id="Cloud" data-header-css-class="CloudCol trTable" id="Cloud">Cloud
+                                        </th>
+                                        <th data-column-id="Fecha" data-header-css-class="FechaCol trTable" id="Fecha">Date
+                                        </th>
+                                        <th data-column-id="estado" data-header-css-class="estadoCol trTable" id="estado">Status</th>
+                                        <th data-column-id="Revision" data-header-css-class="RevisionCol trTable"
+                                            id="Revision">Review</th>
+                                        <th data-column-id="AccountGroup" data-header-css-class="AcGroupCol trTable"
+                                            id="AccountGroup">Account Group</th>
+                                        <th data-column-id="commands" data-header-css-class="editarCol trTable disable-resize"
+                                            data-formatter="commands" data-sortable="false" data-searchable="false">Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="clouds" id="cloudTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="analisis" class="tab-pane fade show active analisis content">
+                    <?php insertLoadingDinamic("Reviews", "reviewsLoading", "mt-2 mb-2") ?>
+                    <div class="analisis row">
+                        <div class="row">
+                            <div class="col-md-12 tabla-pruebas">
+                                <div class="row mb-1 mt-3 tarjetasRevision">
+                                </div>
+                                <table class="table table-striped table-hover table-responsive-md table-11cert mshide"
+                                    id="tablaRevisiones">
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="Id" id="id" data-visible="false" data-type="numeric">Id</th>
+                                            <th data-column-id="Nombre" id="nombre">Name</th>
+                                            <th data-column-id="Proyecto" data-visible="true" id="proyecto">Project</th>
+                                            <th data-column-id="CloudId" data-visible="true" id="cloudId">Cloud Id</th>
+                                            <th data-column-id="CloudName" data-visible="true" id="cloudName">Cloud Name</th>
+                                            <th data-column-id="FechaInicio" id="fechaInicio">Date Init</th>
+                                            <th data-column-id="FechaFinal" id="fechaFinal">Date final</th>
+                                            <th data-column-id="Estado" id="estado">State</th>
+                                            <th data-column-id="osa" id="osa">OSA</th>
+                                            <th data-column-id="Responsable" id="Responsable">R.Review</th>
+                                            <th data-header-css-class="disable-resize" data-column-id="commands" data-formatter="commands" data-sortable="false" data-searchable="false">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="pruebas" id="tablaPruebas">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade issues content" id="issues">
+                    <!-- Contenido de Issues -->
+                    <?php insertLoadingDinamic("Issues de Jira", "issuesLoading", "mb-2") ?>
+                    <div class="contenedorContadores row justify-content-end">
+                        <div class="col-md-3 mb-3">
+                            <div class="rounded sombraRegistro contRegistradas d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Registradas</p>
+                                <p class="textContador my-auto"><span
+                                        class="textRegistradas">0</span></p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="contador sombraContador rounded contAbiertas d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Abiertas</p>
+                                <p class="textContador textAbiertas my-auto">0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="contador sombraContador rounded contCerradas d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Cerradas</p>
+                                <p class="textContador textCerradas my-auto">0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="contador sombraContador rounded contClonadas d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Clonadas cerradas</p>
+                                <p class="textContador textClonadas my-auto">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <button class="btn btn-primary btn-volver mshide">Volver</button>
+                    </div>
+                    <div class="col-sm d-flex justify-content-end">
+                        <button class="btn btn-primary btn-delIssue moduloInfo btn-spacer mshide">Eliminar issue</button>
+                    </div>
+                    <div class='tablaIssues mshide'>
+                        <div class="issuesOriginales">
+                            <table class="table table-condensed table-hover table-striped table-issues table-11cert" id='issuesTabla'>
+                                <caption>Listado de Issues de Jira</caption>
+                                <thead>
+                                    <tr>
+                                        <th data-column-id="issueLink" data-escape="false" data-header-css-class="IDCol" id="id">CISO ID</th>
+                                        <th data-column-id="CloudId" data-visible="true" id="cloudId">Cloud Id</th>
+                                        <th data-column-id="CloudName" data-visible="true" id="cloudName">Cloud Name</th>
+                                        <th data-column-id="Estado" data-header-css-class="estadoCol" id="nombre">Estado</th>
+                                        <th data-column-id="EstadoClonada" data-header-css-class="estadoClonadaCol"
+                                            data-visible="false" id="nombre">Estado clonada</th>
+                                        <th data-column-id="Resumen" data-header-css-class="resumenCol" id="descripcion">Resumen
+                                        </th>
+                                        <th data-column-id="Proyecto" data-header-css-class="proyectoCol" id="tipo">Proyecto
+                                        </th>
+                                        <th data-column-id="Responsable" data-header-css-class="responsableCol"
+                                            data-visible="false" id="by">Informada por:</th>
+                                        <th data-column-id="Review" data-header-css-class="pentestCol" data-visible="false"
+                                            id="by">Review</th>
+                                        <th data-column-id="Fecha" data-header-css-class="fechaCol"
+                                            data-type="date" id="date">Fecha</th>
+                                        <th data-column-id="Dias" data-header-css-class="diasCol" data-visible="false"
+                                            id="dias">Antigüedad</th>
+                                        <th data-column-id="Prioridad" data-header-css-class="prioridadCol" id="prio">Prioridad</th>
+                                        <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='tiposIssues'>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ClonadasCerradas mshide">
+                            <table class="table table-condensed table-hover table-striped table-issues table-11cert"
+                                id='cerradasClonadasTabla'>
+                                <caption>Listado de Issues de Jira</caption>
+                                <thead>
+                                    <tr>
+                                        <th data-column-id="issueLink" data-escape="false" data-header-css-class="IDCol" id="id">CISO ID</th>
+                                        <th data-column-id="Estado" data-header-css-class="estadoCol" id="nombre">Estado</th>
+                                        <th data-column-id="EstadoClonada" data-header-css-class="estadoClonadaCol"
+                                            data-visible="false" id="nombre">Estado clonada</th>
+                                        <th data-column-id="Resumen" data-header-css-class="resumenCol" id="descripcion">Resumen
+                                        </th>
+                                        <th data-column-id="Proyecto" data-header-css-class="proyectoCol" id="tipo">Proyecto
+                                        </th>
+                                        <th data-column-id="Responsable" data-header-css-class="responsableCol"
+                                            data-visible="false" id="by">Informada por:</th>
+                                        <th data-column-id="Review" data-header-css-class="pentestCol" data-visible="false"
+                                            id="by">Review</th>
+                                        <th data-column-id="Fecha" data-header-css-class="fechaCol"
+                                            data-type="date" id="date">Fecha</th>
+                                        <th data-column-id="Dias" data-header-css-class="diasCol" data-visible="false"
+                                            id="dias">Antigüedad</th>
+                                        <th data-column-id="Prioridad" data-header-css-class="prioridadCol" id="prio">Prioridad</th>
+                                        <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='tiposCerradas'>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="infoIssue mshide mt-5">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5 class="text-center infoKey mshide">Cargando key...</h5>
+                                <h5 class="text-center"> <a href="" target="_blank" class="enlaceIssue">Cargando key...</a> / <a
+                                        href="" target="_blank" class="enlaceClonada">Cargando key...</a></h5>
+                                <h1 class="text-center font-weight-bold infoSummary mb-2">Cargando resumen...</h1>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-status btn-closeIssue float-right mshide">Cerrar
+                                            issue</button>
+                                        <button class="btn btn-primary btn-status btn-openIssue float-right mshide">Abrir
+                                            issue</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th>Propiedad</th>
+                                                    <th>Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="titulo">Estado:</td>
+                                                    <td class="infoEstado">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Resolución:</td>
+                                                    <td class="infoRes">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Nivel de seguridad:</td>
+                                                    <td class="infoNivel">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Etiquetas:</td>
+                                                    <td class="infoTag">Cargando...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th>Campo</th>
+                                                    <th>Contenido</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="titulo">Descripción:</td>
+                                                    <td class="infoDesc">Cargando...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th>Campo</th>
+                                                    <th>Contenido</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="titulo">Evidencias:</td>
+                                                    <td class="insertEvidence">
+                                                        <form class="ArchivosForm">
+                                                            <input type="file" class="form-control-file" id="archivos"
+                                                                name="file[]" multiple>
+                                                            <div class="btn btn-primary ms-2 btnEnviarArchivos">Enviar</div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <table class="table table-borderless table-transparent">
+                                            <thead>
+                                                <tr>
+                                                    <th>Propiedad</th>
+                                                    <th>Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="titulo">Prioridad Ciso:</td>
+                                                    <td class="infoPrio">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Proyecto de area/servicio:</td>
+                                                    <td class="infoProy">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Metodología - Definicion de la vulnerabilidad:</td>
+                                                    <td class="infoMeto">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">CVSS:</td>
+                                                    <td class="infoCVSS">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Tipo de vulnerabilidad:</td>
+                                                    <td class="infoVulne">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Tipo de análisis:</td>
+                                                    <td class="infoAnalysis">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Impacto de vulnerabilidad:</td>
+                                                    <td class="infoImpact">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Probabilidad de explotación:</td>
+                                                    <td class="infoProb">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Estado de la vulnerabilidad:</td>
+                                                    <td class="infoStatus">Cargando...</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="titulo">Alertas reportadas:</td>
+                                                    <td class="infoReference">Cargando...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h4 class="text-center mt-5">Estado de las alertas</h4>
+                            <div class="col-12">
+                                <div class="infoAlertas">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h4 class="text-center mt-5">Comentarios</h4>
+                            <div class="chat-container">
+                                <div class="col-12 chat">
+                                    <div class="card mb-2">
+                                        <div class="card-header writter">
+                                            <h6 class="card-title mb-0 escritor">Cargando comentarios...</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text comentario">Cargando comentarios...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 input-container d-flex align-items-center">
+                                    <input type="text" class="form-control flex-grow-1 commentWritter"
+                                        placeholder="Escribe un mensaje...">
+                                    <button class="btn btn-primary ms-2 btnEnviarComentario">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-osa mshide">
+            <div class="row">
+                <div class="col-sm-6 text-start">
+                    <button type="button" class="btn btn-primary volver">Go back</button>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                    <h2>OSA form for project: <b><span id="name-revision"></span></b></h2>
+                </div>
+            </div>
+            <form id="form-data-osa">
+                <div class="mb-3 row align-items-center">
+                    <label for="selectorInicial" class="col-sm-2 col-form-label">Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-select" id="osa-type" aria-label="Tipo OSA">
+                            <option value="Cloud">Cloud</option>
+                            <option value="On premise">On Premise</option>
+                        </select>
+                        <input class="mshide" id="id-revision-osa" name="revision_id" type="number"></input>
+                    </div>
+                </div>
+                <div class="mb-3 row align-items-center osa-list">
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm-12 text-end">
+                    <button type="button" class="btn btn-primary" id="send-osa">Send</button>
+                </div>
+            </div>
+        </div>
+        <div class="alertasReview mshide">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2><b id="SuscriptionId">Suscription Alerts</b></h2>
+                </div>
+                <div class="suscripcion-container mshide">
+                    <div class="suscripcion-card">
+                        <h2 class="suscripcion-title">Información de la Suscripción</h2>
+                        <div class="suscripcion-info-row">
+                            <div class="suscripcion-info-col">
+                                <strong>Suscripción:</strong> <span id="SuscriptionName"></span>
+                            </div>
+                            <div class="suscripcion-info-col">
+                                <strong>ID:</strong> <span id="SuscriptionIdText"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-start">
+                    <button class="btn btn-primary volver">Go back</button>
+                </div>
+                <div class="col-md-6 suscripcionInfo text-start">
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                </div>
+                <div class="tablaAlertas row justify-content-end">
+                    <div class="col-12-md">
+                        <div class='col-12 response mb-3 EVS'>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="open nav-link active pointer" data-bs-toggle="tab" id="tab-abiertas" href="#abiertas">Open Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="close nav-link pointer" data-bs-toggle="tab" id="tab-dismissed" href="#dismissed">Dismissed Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="added nav-link pointer" data-bs-toggle="tab" id="tab-added" href="#added">Added Alerts</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="containerAlertsReview">
+                            <div class="tab-pane fade show active abiertas content" id="abiertas">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-4 text-start">
+                                        <div class="sum-policy-alerts-open text-muted">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 text-end">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <button class="btn btn-primary addToRevision">Add to review</button>
+                                            <button class="btn btn-primary dismissToRevision">Dismiss Alerts</button>
+                                            <input type="text" class="form-control searcher" placeholder="Buscar Open Alerts...">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="containerAlertsOpen">
+                                    <!-- Aquí se insertarán dinámicamente los acordeones o tablas de Open Alerts -->
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fadedismissed content" id="dismissed">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-4 text-start">
+                                        <div class="sum-policy-alerts-closed text-muted">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 text-end">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <input type="text" class="form-control searcher" placeholder="Buscar Dismissed Alerts...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="containerAlertsClose">
+                                    <!-- Aquí se insertarán dinámicamente los acordeones o tablas de Dismissed Alerts -->
+                                </div>
+                            </div>
+                            <!-- Pestaña de Added Alerts con buscador -->
+                            <div class="tab-pane fade added content" id="added">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-4 text-start">
+                                        <div class="sum-policy-alerts-added text-muted">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 text-end">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <button class="btn btn-primary unassignAlerts">Unassign Alerts</button>
+                                            <button class="btn btn-primary btnReportJira">Report on Jira</button>
+                                            <input type="text" class="form-control searcher" placeholder="Buscar Added Alerts...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="containerAlertsAdded">
+                                    <!-- Aquí se insertarán dinámicamente los acordeones o tablas de Added Alerts -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="InfoSuscripcion mshide">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2><b>Suscription Alerts</b></h2>
+                </div>
+                <div class="col-md-12 text-start">
+                    <button class="btn btn-primary volver">Go back</button>
+                </div>
+                <div class="col-md-6 suscripcionInfo text-start">
+                    <h3 class="mt-5"><b>Suscription info</b></h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Suscription ID:</th>
+                                <td class="ColID" id="susId"></td>
+                            </tr>
+                            <tr>
+                                <th>Name:</th>
+                                <td class="ColNombre"></td>
+                            </tr>
+                            <tr>
+                                <th>Owner:</th>
+                                <td class="ColOwner"></td>
+                            </tr>
+                            <tr>
+                                <th>11Cert Active:</th>
+                                <td class="ColActive"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tablaAlertas row justify-content-end mt-4">
+                    <div class="col-12-md">
+                        <div class='col-12 response mb-3 EVS'>
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="open nav-link active pointer" data-bs-toggle="tab" href="#abiertasAlert">Open Alerts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="close nav-link" data-bs-toggle="tab" href="#dismissedAlert">Dismissed Alerts</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <!-- ALERTAS ABIERTAS -->
+                            <div class="tab-pane fade show active" id="abiertasAlert">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-12 text-end">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <input type="text" class="form-control searcher" placeholder="Buscar...">
+                                            <button class="btn btn-primary dismissSelectedAlerts" type="button">Dismiss Alerts</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion" id="accordionInfoOpenAlerts">
+                                    <!-- Cada "Policy ID" se insertará dinámicamente desde JS -->
+                                </div>
+                            </div>
+
+                            <!-- ALERTAS CERRADAS -->
+                            <div class="tab-pane fade" id="dismissedAlert">
+                                <div class="row mb-3 align-items-center">
+                                    <div class="col-12 text-end">
+                                        <div class="d-inline-flex align-items-center gap-2">
+                                            <input type="text" class="form-control searcher" placeholder="Buscar...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion" id="accordionClosedAlerts">
+                                    <!-- Cada "Policy ID" se insertará dinámicamente desde JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <?php getfooter() ?>
+</body>
+
+</html>

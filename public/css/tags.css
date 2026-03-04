@@ -1,0 +1,75 @@
+.simple-tags {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    border: 1px solid #1e87f0;
+    border-radius: 3px;
+    box-sizing: border-box;
+    margin: 1em;
+    padding: 0em 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+.simple-tags > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.simple-tags ul li {
+    margin: 0.5em 0.2em;
+    padding: 0.5em;
+    color: #fff;
+    background-color: #1e87f0;
+    border-radius: 3px;
+}
+.simple-tags ul li a {
+    margin: 0.5em 0.2em;
+    text-decoration: none;
+    color: inherit;
+}
+.simple-tags input {
+    padding: 0.9em 0.5em;
+    box-sizing: border-box;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+#tags-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 5px 0;
+}
+#tags-container ul li {
+  background: #1e87f0;
+  border-radius: 3px;
+  padding: 2px 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+#tags-container ul li a {
+  margin-left: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+#tags-container input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 4px 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}

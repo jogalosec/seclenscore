@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Gestor PGM</title>
+    <?php getheader("Gestor PGM", false) ?>
+    <script src="./js/modules/gestorEvaluaciones/gestorEvalModule.js" type="module" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/gestorEvaluaciones/gestorEvalModule.js", true)) ?>" crossorigin="anonymous"></script>
+    <script src="./js/modules/gestorEvaluaciones/cloneEvaluacion.js" type="module" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/gestorEvaluaciones/cloneEvaluacion.js", true)) ?>" crossorigin="anonymous"></script>
+    <script src="./js/modules/gestorEvaluaciones/compararEvaluacion.js" type="module" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/gestorEvaluaciones/compararEvaluacion.js", true)) ?>" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/gestorERS.css">
+    <link rel="stylesheet" href="./css/styleLoading.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class="container">
+
+        <div class="col-12 response mb-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="pruebas nav-link active pointer" data-bs-toggle="tab" href="#pruebas">Pruebas por evaluar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link evaluaciones" data-bs-toggle="tab" href="#evaluaciones">Evaluaciones</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active pruebas content" id="pruebas">
+                <div class="row mb-5">
+                    <div class="tablaIssues row justify-content-center">
+                        <div class="col-md-3 mb-3">
+                            <div class="contador rounded contSinCerrar d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Pruebas en proceso</p>
+                                <p class="textContador textSinCerrar my-auto">0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="contador rounded contSinIdent d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Pruebas por identificar</p>
+                                <p class="textContador textSinIdentificar my-auto">0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="contador rounded contPorEvaluar d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Pruebas por evaluar</p>
+                                <p class="textContador textPorEvaluar my-auto">0</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="rounded contEvaluadas d-flex flex-column align-items-center">
+                                <p class="textContador my-auto">Pruebas evaluadas</p>
+                                <p class="textContador textEvaluadas my-auto">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5 tarjetas">
+                    <div class="col-md-12 evalCompletas justify-content-center">
+                        <p class="text-center">No tienes evaluaciones por gestionar! :D</p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class='col-12 response mb-3 gestorEval'>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="evalRealizadasTab nav-link active pointer" data-bs-toggle="tab" href="#evalRealizadasTab">Evaluaciones realizadas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="evalPorRealizarTab nav-link pointer" data-bs-toggle="tab" href="#evalPorRealizarTab">Evaluaciones por realizar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="pruebasEnProcesoTab nav-link pointer" data-bs-toggle="tab" href="#pruebasEnProcesoTab">Pruebas en proceso</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active evalRealizadasTab content" id="evalRealizadasTab">
+                            <div class="tablaEvalRealizadas">
+                                <table class="table table-condensed table-hover table-striped table-pruebas mshide" id='evaluacionesRealizadas'>
+                                    <caption>Evaluaciones realizadas</caption>
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="Nombre" data-header-css-class="NombrePrueba" id="id">Nombre</th>
+                                            <th data-column-id="tipoPrueba" data-header-css-class="tipoPrueba" data-visible="true" id="nombre">Tipo de prueba</th>
+                                            <th data-column-id="Proyecto" data-header-css-class="proyectoCol" data-visible="false" id="tipo">Proyecto</th>
+                                            <th data-column-id="Responsable" data-header-css-class="responsableCol" data-visible="false" id="by">Responsable pentest:</th>
+                                            <th data-column-id="ResponsableProy" data-header-css-class="responsableProyCol" data-visible="false" id="by">Responsable proyecto:</th>
+                                            <th data-column-id="FechaInicio" data-header-css-class="fechaFinalCol" id="date">Fecha inicio</th>
+                                            <th data-column-id="FechaFinal" data-header-css-class="fechaInicioCol" id="date">Fecha final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='evalRealizadas'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show evalPorRealizarTab content" id="evalPorRealizarTab">
+                            <div class="tablaEvalPorRealizar">
+                                <table class="table table-condensed table-hover table-striped table-pruebas mshide" id='evaluacionesPorRealizar'>
+                                    <caption>Evaluaciones por realizar</caption>
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="Nombre" data-header-css-class="NombrePrueba" id="id">Nombre</th>
+                                            <th data-column-id="tipoPrueba" data-header-css-class="tipoPrueba" data-visible="true" id="nombre">Tipo de prueba</th>
+                                            <th data-column-id="Proyecto" data-header-css-class="proyectoCol" data-visible="false" id="tipo">Proyecto</th>
+                                            <th data-column-id="Responsable" data-header-css-class="responsableCol" data-visible="false" id="by">Responsable pentest:</th>
+                                            <th data-column-id="ResponsableProy" data-header-css-class="responsableProyCol" data-visible="false" id="by">Responsable proyecto:</th>
+                                            <th data-column-id="FechaInicio" data-header-css-class="fechaFinalCol" id="date">Fecha inicio</th>
+                                            <th data-column-id="FechaFinal" data-header-css-class="fechaInicioCol" id="date">Fecha final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='evalPorRealizadas'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show pruebasEnProcesoTab content" id="pruebasEnProcesoTab">
+                            <div class="tablaPruebasEnProceso">
+                                <table class="table table-condensed table-hover table-striped table-pruebas mshide" id='pruebasEnProceso'>
+                                    <caption>Pruebas en proceso</caption>
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="Nombre" data-header-css-class="NombrePrueba" id="id">Nombre</th>
+                                            <th data-column-id="tipoPrueba" data-header-css-class="tipoPrueba" data-visible="true" id="nombre">Tipo de prueba</th>
+                                            <th data-column-id="Proyecto" data-header-css-class="proyectoCol" data-visible="false" id="tipo">Proyecto</th>
+                                            <th data-column-id="Responsable" data-header-css-class="responsableCol" data-visible="false" id="by">Responsable pentest:</th>
+                                            <th data-column-id="ResponsableProy" data-header-css-class="responsableProyCol" data-visible="false" id="by">Responsable proyecto:</th>
+                                            <th data-column-id="FechaInicio" data-header-css-class="fechaFinalCol" id="date">Fecha inicio</th>
+                                            <th data-column-id="FechaFinal" data-header-css-class="fechaInicioCol" id="date">Fecha final</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id='pruEnProceso'>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade evaluaciones content" id="evaluaciones">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center mb-4">
+                        <h2 class="text-center"><b>Comparador de evaluaciones</b></h2>
+                    </div>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary btn-comparar me-2 mshide">Comparar Evaluaciones</button>
+                        <button class="btn btn-primary btn-clonar ms-2">Clonar Evaluación</button>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 col-12 mt-3">
+                        <div class="evaluacionScreen m-1">
+                            <h2 class="titleServicio"><b>Evaluación Origen</b></h2>
+                            <div id="sistemaOrigenDiv">
+
+                            </div>
+                            <div class="d-flex justify-content-center" id="sistemaOrigenDivdisplay-loading">
+
+                            </div>
+                            <div class="d-flex justify-content-center pb-5">
+                                <button class="btn btn-primary mshide" id="btnMostrarEvaluacionOrigen">Mostrar evaluaciones</button>
+                            </div>
+                            <div class="d-flex justify-content-center pb-4 mshide row contenedorSelectorOrigen">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <select class="form-select" id="evaluacionesOrigenSelector" aria-label="Selector de Evaluaciones"></select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center pb-4 loadingEvaluacionesOrigen">
+                            </div>
+                            <div class="display_errorsOrigen">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 mt-3 mb-3">
+                        <div class="evaluacionScreen m-1">
+                            <h2 class="titleServicio"><b>Evaluación Destino</b></h2>
+                            <div id="sistemaDestinoDiv">
+
+                            </div>
+                            <div class="d-flex justify-content-center" id="sistemaDestinoDivdisplay-loading">
+
+                            </div>
+                            <div class="d-flex justify-content-center pb-5">
+                                <button class="btn btn-primary mshide" id="btnMostrarEvaluacionDestino">Mostrar evaluaciones</button>
+                            </div>
+                            <div class="d-flex justify-content-center pb-4 mshide contenedorSelectorDestino">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <select class="form-select" id="evaluacionesDestinoSelector" aria-label="Selector de Evaluaciones"></select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center pb-4 loadingEvaluacionesDestino">
+                            </div>
+                            <div class="display_errorsDestino">
+                            </div>
+                        </div>
+                    </div>
+                    <?php insertLoadingDinamic("Diferencias entre evaluaciones", "diferenciasLoading", "mb-2", true) ?>
+                    <div class="col-md-6 col-sm-12 col-12 mt-3">
+                        <div class="evaluacionScreen m-1 mshide p-3 pt-0" id="DIVpreguntasOrigen">
+                            <h2 class="titleServicio"><b>Respuestas evaluación</b></h2>
+                            <div id="preguntasOrigen">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12 mt-3">
+                        <div class="evaluacionScreen m-1 mshide p-3 pt-0" id="DIVpreguntasDestino">
+                            <h2 class="titleServicio"><b>Respuestas evaluación</b></h2>
+                            <div id="preguntasDestino">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <?php getfooter() ?>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Gestión de usuarios</title>
+    <?php getheader("Gestión de usuarios", false) ?>
+    <link rel="stylesheet" href="./css/users.css">
+    <link rel="stylesheet" href="./css/styleLoading.css">
+    <script src="./js/modules/usersModule.js" type="module" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/usersModule.js", true)) ?>" crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class="container">
+        <div class="row">
+            <div class='col-12'>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="users nav-link active pointer" data-bs-toggle="tab" href="#users">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="roles nav-link pointer" data-bs-toggle="tab" href="#roles">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="endpoints nav-link pointer" data-bs-toggle="tab" href="#endpoints">Endpoints</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div id="users" class="tab-pane fade show active users content">
+                <?php insertLoadingDinamic("Usuarios", "usuariosLoading", "mb-2") ?>
+                <div class='tablaUsers mshide'>
+                    <table id="table-users" class="table table-condensed table-hover table-striped table-11cert">
+                        <caption>Listado de usuarios</caption>
+                        <thead>
+                            <th id='user-id' data-column-id="id" data-header-css-class="col-id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
+                            <th id='email' data-column-id="email" data-header-css-class="col-mails">EMAIL</th>
+                            <th id='rolesUser' data-column-id="roles" data-header-css-class="col-roles">ROLES</th>
+                            <th data-column-id="commands" data-header-css-class="col-commands" data-formatter="commands" data-sortable="false" data-searchable="false">ACCIONES</th>
+                        </thead>
+                        <tbody id='users-grid-data'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="roles" class="tab-pane fade roles content">
+                <?php insertLoadingDinamic("Roles", "rolesLoading", "mb-2") ?>
+                <div class='tablaRoles mshide'>
+                    <table id="table-roles" class="table table-condensed table-hover table-striped table-11cert" id='Roles'>
+                        <caption>Listado de roles</caption>
+                        <thead>
+                            <tr>
+                                <th data-column-id="id" id="role-id" data-visible="false" data-type="numeric" data-identifier="true">ID</th>
+                                <th data-column-id="name" id="name">NOMBRE</th>
+                                <th data-column-id="color" id="color">COLOR</th>
+                                <th data-column-id="additional_access" id="additional_access">ACCESO ADICIONAL</th>
+                                <th data-column-id="commands" data-formatter="commands" data-sortable="false" data-searchable="false">ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id='roles-grid-data'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="endpoints" class="tab-pane fade endpoints content">
+                <?php insertLoadingDinamic("Endpoints", "endpointsLoading", "mb-2") ?>
+                <div class='tablaEndpoints mshide'>
+                    <table id="table-endpoints" class="table table-condensed table-hover table-striped table-11cert" id='Endpoints'>
+                        <caption>Listado de endpoints</caption>
+                        <thead>
+                            <tr>
+                                <th data-column-id="endpoint_id" id="endpoint-id" data-type="numeric" data-identifier="true" data-visible="false">ID</th>
+                                <th data-column-id="route" id="route">RUTA</th>
+                                <th data-column-id="description" id="description">DESCRIPCIÓN</th>
+                                <th data-column-id="tags" id="tags">TAGS</th>
+                                <th data-column-id="method" id="method">MÉTODO</th>
+                                <th data-column-id="assigned" id="assigned">ESTADO</th>
+                            </tr>
+                        </thead>
+                        <tbody id='endpoints-grid-data'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php getfooter() ?>
+</body>
+
+</html>

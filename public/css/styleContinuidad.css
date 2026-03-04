@@ -1,0 +1,80 @@
+.Leve {
+  background-color: #548237;
+  color: #314d20;
+}
+
+.Bajo,
+.Finalizado,
+.fechaNew {
+  background-color: #8ac833;
+  color: #52771efd;
+}
+
+.Moderado,
+.EnProgreso {
+  background-color: #ffb32f;
+  color: #bd8423;
+}
+
+.Alto,
+.Descartado {
+  background-color: rgba(236, 103, 59, 0.77);
+  color: #863a21;
+}
+
+.Critico {
+  background-color: rgba(145, 25, 39, 0.753);
+  color: #460c13;
+}
+
+.Error,
+.NoIniciado,
+.fechaOld {
+  background-color: #9b9b9b;
+  color: #5f5f5f;
+}
+
+.NoAplica {
+  background-color: #6d16cf;
+  color: #3d0d74;
+}
+
+.Iniciado {
+  background-color: #5ac3e6;
+  color: #3084a0;
+}
+
+.pill {
+  font-weight: bold;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.floating-card {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.card {
+  border-color: #0d6efd;
+}
+
+#alert-text {
+  font-size: 13px;
+}
+
+#alert-title {
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+.continuidad-actionsCol {
+  width: 140px;
+}
+
+.fixed-width-actions {
+    min-width: 250px;
+}

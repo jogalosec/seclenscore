@@ -1,0 +1,10 @@
+/.vscode
+/.scannerwork
+/vendor
+/public/swagger.json
+*.pem
+xdebug.log
+requestTime.csv
+sonar-project.properties
+composer.lock
+includes/config.ini

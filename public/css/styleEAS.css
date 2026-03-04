@@ -1,0 +1,534 @@
+/* Estilo para los contadores de informacion de las suscripciones */
+
+.contRegistradas {
+  background-color: #0d6efd;
+  cursor: pointer;
+}
+
+.contAbiertas {
+  background-color: #e74c3c;
+}
+
+.contCerradas {
+  background-color: #27ae60;
+}
+
+.contClonadas {
+  background-color: #9b59b6;
+  cursor: pointer;
+}
+
+.textContador {
+  font-weight: bold;
+  font-size: 120%;
+  color: white;
+}
+
+/* Estilo para las tablas */
+
+.tabla-especial {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tabla-especial th,
+.tabla-especial td {
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+  border: none;
+}
+
+.tabla-especial thead tr th {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.tabla-especial thead tr th:hover {
+  background-color: #3484fc;
+}
+
+.trTable a span {
+  color: white;
+}
+
+/* Estilo para la informacion de las suscripciones */
+
+.suscripcionInfo {
+  text-align: center;
+}
+
+.suscripcionInfo table {
+  border-collapse: collapse;
+}
+
+.suscripcionInfo th,
+.suscripcionInfo td {
+  border: none;
+}
+
+/* Estilo para las tarjetas */
+
+.card {
+  position: relative !important;
+}
+
+.btn_prueba {
+  background-color: #a3a3a3;
+  height: 30px;
+  text-align: center;
+}
+
+.CloudCol {
+  width: 7%;
+}
+
+.FechaCol {
+  width: 10%;
+}
+
+.editarCol {
+  width: 12%;
+  text-align: center !important;
+}
+
+.AcGroupCol {
+  width: 15%;
+}
+
+.CheckCol {
+  width: 5%;
+}
+
+.IDCol {
+  width: 15%;
+}
+
+.EstadoCol {
+  width: 10%;
+}
+
+/* Hay que hacer una mediaQuery para los portatiles */
+@media (max-width: 1194px) {
+  .CloudCol {
+    width: 10%;
+  }
+
+  .FechaCol {
+    width: 12%;
+  }
+
+  .editarCol {
+    width: 10%;
+  }
+
+  .AcGroupCol {
+    width: 20%;
+  }
+}
+
+/* Estilo desplegable de la barra de responsables */
+#suggestionsInformer {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsInformer li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+#suggestionsResponsable {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsResponsable li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+#suggestionsPentest {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsPentest li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+.img-prueba {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.estado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  height: 25px;
+  width: 100px;
+}
+
+.abierto {
+  background-color: #e74c3c;
+}
+
+.cerrado {
+  background-color: #27ae60;
+}
+
+.osa-list {
+  font-size: small;
+}
+
+#send-osa {
+  width: 150px;
+}
+
+.numberEstado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.moreButton {
+  width: 20px;
+  height: 20px;
+}
+
+.Leve {
+  background-color: #548237;
+  color: #314d20;
+}
+
+.Bajo,
+.Finalizado,
+.fechaNew {
+  background-color: #8ac833;
+  color: #52771efd;
+}
+
+.Moderado,
+.EnProgreso {
+  background-color: #ffb32f;
+  color: #bd8423;
+}
+
+.Alto,
+.Descartado {
+  background-color: rgba(236, 103, 59, 0.77);
+  color: #863a21;
+}
+
+.Critico {
+  background-color: rgba(145, 25, 39, 0.753);
+  color: #460c13;
+}
+
+.pill {
+  font-weight: bold;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.policy-type {
+  background: #bdbdbdbd;
+}
+
+.btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.info-icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+table[id^="table-"] {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table[id^="subTable-"] th,
+.table[id^="subTable-"] td {
+  width: auto;
+  text-wrap: auto;
+}
+
+.table[id^="table-"] th,
+.table[id^="table-"] td {
+  width: auto;
+  text-wrap: auto;
+}
+
+table[id^="table-"] thead > tr > th.select-cell,
+table[id^="table-"] tbody > tr > td.select-cell {
+  width: 30px !important;
+  max-width: 30px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+table[id^="subTable-"] thead > tr > th.select-cell,
+table[id^="subTable-"] tbody > tr > td.select-cell {
+  width: 30px !important;
+  max-width: 30px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select-cell {
+  width: 10px;
+  min-width: 30px;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.col-id,
+.col-resources,
+.col-name,
+.col-severity,
+.col-sawAsociado {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.col-id {
+  width: 20px;
+  max-width: 50px;
+  padding: 10px;
+}
+
+.col-resources {
+  width: 480px !important;
+  max-width: 480px;
+  padding: 10px;
+}
+
+.col-name {
+  width: 20px;
+  max-width: 130px;
+  padding: 10px;
+}
+
+.col-severity {
+  width: 20px;
+  padding: 10px;
+}
+
+.col-sawAsociado {
+  width: 25px;
+  padding: 10px;
+}
+
+.col-days,
+.col-estado,
+.col-resources,
+.col-commands,
+.select-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.col-days {
+  width: 20px;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.col-estado {
+  width: 10px;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.col-commands {
+  width: 25px;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.ID-prioridad {
+  height: 15px;
+}
+
+.low {
+  width: 25%;
+  background-color: #27ae60;
+}
+
+.medium {
+  width: 50%;
+  background-color: #f39c12;
+}
+
+.major {
+  width: 75%;
+  background-color: #e74c3c;
+}
+
+.critical {
+  width: 100%;
+  background-color: #9b59b6;
+}
+
+.searcher {
+  width: 350px;
+  height: 40px;
+}
+
+.tabla-suscripciones {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabla-suscripciones th,
+.tabla-suscripciones td {
+  border: none;
+  padding: 8px;
+  text-align: left;
+}
+
+.remove-email-btn {
+  background: none;
+  border: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-email-btn::before,
+.remove-email-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  background-color: #dc3545;
+  transform-origin: center;
+}
+
+.remove-email-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.remove-email-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.remove-email-btn:hover::before,
+.remove-email-btn:hover::after {
+  background-color: #ff0000;
+}
+
+.remove-email-btn:focus {
+  outline: none;
+}
+
+.email-field {
+  margin-bottom: 8px;
+}
+
+.ID-clon {
+  color: grey;
+  font-size: 75%;
+  font-weight: bold;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.sombraRegistro {
+  box-shadow: 0px 0px 0px 4px rgba(13, 110, 253, 0.7);
+}
+
+.sombraClonadas {
+  box-shadow: 0px 0px 0px 4px rgba(155, 89, 182, 0.7);
+}
+
+.suscripcion-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.suscripcion-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px 32px;
+  margin: 16px 0;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+}
+
+.suscripcion-title {
+  color: #111;
+  font-weight: bold;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.suscripcion-info-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.suscripcion-info-col {
+  flex: 1 1 300px;
+  font-size: 1.1em;
+}
+
+.cloudNameCol {
+  width: 150px !important;
+}
+
+.estadoCol {
+  width: 100px;
+}

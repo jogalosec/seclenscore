@@ -1,0 +1,157 @@
+:root {
+  --critical-color: #d32f2f;
+  --major-color: #f57c00;
+  --medium-color: #fbc02d;
+  --low-color: #388e3c;
+  --informational-color: #0288d1;
+}
+
+.totalVulns {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+  width: 100px;
+  text-align: center;
+}
+
+.tituloActivo {
+  color: #535457;
+}
+
+.conRiesgo {
+  border: 1px solid var(--critical-color);
+  color: var(--critical-color);
+}
+
+.sinRiesgo {
+  border: 1px solid var(--medium-color);
+  color: var(--medium-color);
+}
+
+.searcher {
+  width: 350px;
+  height: 40px;
+}
+
+.ID-nombre {
+  font-weight: bold;
+}
+
+.estado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  height: 25px;
+  width: 95px;
+}
+
+.abierta {
+  border: 1px solid var(--critical-color);
+  color: var(--critical-color);
+}
+
+.cerrada {
+  border: 1px solid var(--medium-color);
+  color: var(--medium-color);
+}
+
+.statusCol {
+  width: 10%;
+}
+
+.CodVulnCol {
+  width: 15%;
+}
+
+.criticidadCol {
+  width: 10%;
+}
+
+.arquitectura {
+  border: 1px solid #9b59b6;
+  color: #9b59b6;
+}
+
+.tipoPruebaCol {
+  width: 13%;
+}
+
+.pill {
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.low-criticidad {
+  background-color: var(--medium-color);
+}
+
+.medium-criticidad {
+  background-color: var(--major-color);
+}
+
+.major-criticidad {
+  background-color: var(--critical-color);
+}
+
+.critical-criticidad {
+  background-color: #9b59b6;
+}
+
+.pentest,
+.type-low {
+  border: 1px solid var(--low-color);
+  color: var(--low-color);
+}
+
+.type-medium {
+  color: var(--medium-color);
+  border: 1px solid var(--medium-color);
+}
+
+.type-major {
+  color: var(--major-color);
+  border: 1px solid var(--major-color);
+}
+
+.type-critical {
+  color: var(--critical-color);
+  border: 1px solid var(--critical-color);
+}
+
+.contadorEmpty {
+  background-color: gainsboro;
+  color: gainsboro;
+  border: 1px solid gainsboro;
+}
+
+.card {
+  position: relative;
+}
+
+.card-critical {
+  border-color: var(--critical-color);
+}
+
+.card-major {
+  border-color: var(--major-color);
+}
+
+.card-medium {
+  border-color: var(--medium-color);
+}
+
+.card-low {
+  border-color: var(--low-color);
+}
+
+.btn-download {
+  border: 1px solid #dee2e6;
+}
+
+.btn-download:hover {
+  border: 1px solid #dee2e6;
+}
+
+.btn-download:active {
+  border: 1px solid #86b7fe !important;
+}

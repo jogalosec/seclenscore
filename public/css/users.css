@@ -1,0 +1,19 @@
+.col-id {
+  width: 5%;
+}
+
+.col-mails {
+  width: 35%;
+}
+
+.col-roles {
+  width: 40%;
+}
+
+.col-commands {
+  width: 20%;
+}
+
+.tablaUsers td {
+  text-wrap: auto;
+}

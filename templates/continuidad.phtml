@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Continuidad</title>
+    <?php getheader("Continuidad", false) ?>
+    <link rel="stylesheet" href="./css/styleContinuidad.css">
+    <link rel="stylesheet" href="./css/styleLoading.css">
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+    <script src="./js/continuidad/continuidad.js" type="module"
+        integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/continuidad/continuidad.js", true)) ?>"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class="container">
+        <div class="tablaPacsContinuidadContainer row justify-content-end">
+            <div class="col-md-12 d-flex mt-1 mb-3 align-items-center">
+                <h1 class="h1Title me-3 my-auto">Continuidad de Negocio</h1>
+                <img class="iconoTitulo my-auto" src="./img/Recorrido.svg" title="Continuidad" alt="Icono continuidad">
+            </div>
+            <div class="col-md-12 d-flex mt-1 mb-3 align-items-center">
+                <div class='col-12 response mb-3 EVS'>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link continuidad active pointer" data-bs-toggle="tab" href="#continuidad">Sistemas con seguimiento de PAC de continuidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link tablaBIA pointer" data-bs-toggle="tab" href="#tablaBIA">Tabla de BIA</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div id="continuidad" class="tab-pane fade show active continuidad content row">
+                            <div class="row">
+                                <div class="col-md-6 d-flex">
+                                    <h3 class="minititle">Sistemas con seguimiento de PAC de continuidad</h3>
+                                </div>
+                                <div class="col-md-6 loading3PSBia d-flex justify-content-end align-items-center">
+                                    <div class="spinner-animation position-relative" id="loadingPacsContinuidad">
+                                        <svg class="spinner-a" height="60" viewBox="0 0 66 66" width="60">
+                                            <circle class="spinner-circle" cx="33" cy="33" fill="none" r="30" stroke-width="3" stroke="#0d6efd"></circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="graficaPacs">
+                                </div>
+                            </div>
+                            <div class="col-md-12 container-tablaPacsContinuidad">
+                                <table class="table-11cert table-striped table-hover table-responsive-md tabla-especial mshide"
+                                    id="tablaPacsContinuidad">
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="id" data-visible="false" data-header-css-class="IDCol trTable" id="id">Seguimiento ID</th>
+                                            <th data-column-id="servicio" data-header-css-class="ServicioCol" id="servicioNombre">Servicio</th>
+                                            <th data-column-id="sistema" data-header-css-class="SistemaCol" id="sistemaNombre">Sistema</th>
+                                            <th data-column-id="estado" data-header-css-class="estadoCol trTable" id="estado">Estado</th>
+                                            <th data-column-id="biaDisponibilidad" data-header-css-class="biaDisponibilidadCol trTable" id="biaDisponibilidad">Impacto Disponibilidad</th>
+                                            <th data-column-id="FechaEval" data-header-css-class="FechaEvalCol trTable" id="FechaEval">Fecha Evaluación</th>
+                                            <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="clouds" id="continuidadTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="tablaBIA" class="tab-pane fade bia content">
+                            <div class="row">
+                                <div class="col-md-6 d-flex">
+                                    <h3 class="minititle">Tabla de BIA</h3>
+                                </div>
+                                <div class="col-md-6 loading3PSBia d-flex justify-content-end align-items-center">
+                                    <div class="spinner-animation position-relative" id="loadingTablaBIA">
+                                        <svg class="spinner-a" height="60" viewBox="0 0 66 66" width="60">
+                                            <circle class="spinner-circle" cx="33" cy="33" fill="none" r="30" stroke-width="3" stroke="#0d6efd"></circle>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 container-tablaBIA">
+                                <table class="table-11cert table-striped table-hover table-responsive-md tabla-especial" id="tablaDatosBIA">
+                                    <thead>
+                                        <tr>
+                                            <th data-column-id="id_bia" data-visible="false" data-header-css-class="IDCol trTable">ID BIA</th>
+                                            <th data-column-id="activobia" data-visible="false" data-header-css-class="ServicioCol">ID Activo</th>
+                                            <th data-column-id="nombreActivo" data-header-css-class="ServicioCol">Nombre activo</th>
+                                            <th data-column-id="preguntaOcho" data-header-css-class="ServicioCol">Pregunta 8</th>
+                                            <th data-column-id="preguntaNueve" data-header-css-class="ServicioCol">Pregunta 9</th>
+                                            <th data-column-id="preguntaDiez" data-header-css-class="ServicioCol">Pregunta 10</th>
+                                            <th data-column-id="commands" data-header-css-class="continuidad-actionsCol" data-formatter="commands" data-sortable="false" data-searchable="false">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="clouds" id="tablaBiaTable"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table-11cert table-striped table-hover table-responsive-md tabla-especial mshide"
+                    id="tablaPacsContinuidad">
+                    <thead>
+                        <tr>
+                            <th data-column-id="id" data-visible="false" data-header-css-class="IDCol trTable" id="id">Seguimiento ID
+                            </th>
+                            <th data-column-id="sistemaId" data-visible="false" id="sistemaId">Sistema ID
+                            </th>
+                            <th data-column-id="servicioId" data-visible="false" id="sistemaId">Servicio ID
+                            </th>
+                            <th data-column-id="servicio" data-header-css-class="ServicioCol" id="servicioNombre">
+                                Servicio</th>
+                            <th data-column-id="sistema" data-header-css-class="SistemaCol" id="sistemaNombre">
+                                Sistema</th>
+                            <th data-column-id="estado" data-header-css-class="estadoCol trTable" id="estado">Estado
+                            </th>
+                            <th data-column-id="biaDisponibilidad" data-header-css-class="biaDisponibilidadCol trTable" id="biaDisponibilidad">Impacto Disponibilidad
+                            </th>
+                            <th data-column-id="FechaEval" data-header-css-class="FechaEvalCol trTable" id="FechaEval">
+                                Fecha Evaluación</th>
+                            <th data-column-id="commands" data-header-css-class="continuidad-actionsCol trTable"
+                                data-formatter="commands" data-sortable="false" data-searchable="false">Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="clouds" id="continuidadTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <?php getfooter() ?>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Plan CISO DC</title>
+    <?php getheader("Plan CISO DC", false) ?>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-12 response plan'>
+                <div class="btn-group nuevo margin-right-20"><button type="button" class="btn btn-xs btn-primary verbajas">Ver bajas</button></div>
+                <div class="btn-group nuevo margin-right-20"><button type="button" class="btn btn-xs btn-primary nuevo-plan" id="command-add" data-row-id="0"><span class="glyphicon glyphicon-plus"></span>Nuevo</button></div>
+                <div class="search vista nuevo margin-right-20">
+                    <select id="vista-plan" class="form-select-custom search select-vista">
+                        <option value="seguimiento">Seguimiento</option>
+                        <option value="arquitectura">Arquitectura</option>
+                        <option value="pentest">Pentest</option>
+                    </select>
+                </div>
+                <div class="divtable mshide">
+                    <table id="table-plan" class="table table-condensed table-hover table-striped">
+                        <caption>Listado de planes</caption>
+                        <thead>
+                            <th id='id' data-column-id="id" data-type="numeric" data-identifier="true" data-visible='false'>id</th>
+                            <th id='direccion' data-column-id="direccion" data-visible='false'>Dirección</th>
+                            <th id='area' data-column-id="area" data-visible='false'>Área</th>
+                            <th id='unidad' data-column-id="unidad" data-visible='false'>Unidad</th>
+                            <th id='criticidad' data-column-id="criticidad" data-visible='false'>Criticidad</th>
+                            <th id='prioridad' data-column-id="prioridad" data-visible='false'>Prioridad</th>
+                            <th id='servicio' data-column-id="servicio">Servicio</th>
+                            <th id='estado' data-column-id="estado">Estado</th>
+                            <th id='elevencert' data-column-id="elevencert">11Cert</th>
+                            <th id='eprivacy' data-column-id="eprivacy">Eprivacy</th>
+                            <th id='jefeproyecto' data-column-id="jefeproyecto">JefeProyecto</th>
+                            <th id='secretoempresarial' data-column-id="secretoempresarial" data-visible='false'>SecretoEmpresarial</th>
+                            <th id='entorno' data-column-id="entorno" data-visible='false'>Entorno</th>
+                            <th id='tenable' data-column-id="tenable" data-visible='false'>Tenable</th>
+                            <th id='dome9' data-column-id="dome9" data-visible='false'>DOME9</th>
+                            <th id='usuarioacceso' data-column-id="usuarioacceso" data-visible='false'>UsuarioAcceso</th>
+                            <th id='revisiones' data-column-id="revisiones" data-visible='false'>Revisiones</th>
+                            <th id='q1' data-column-id="q1" visible="false" data-visible='false'>q1</th>
+                            <th id='q2' data-column-id="q2" visible="false" data-visible='false'>q2</th>
+                            <th id='q3' data-column-id="q3" visible="false" data-visible='false'>q3</th>
+                            <th id='q4' data-column-id="q4" visible="false" data-visible='false'>q4</th>
+                            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Acciones</th>
+                        </thead>
+                        <tbody id='table-plan-data'>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="divtable2 mshide">
+                    <table id="table-plan2" class="table table-condensed table-hover table-striped">
+                        <caption>Listado de planes</caption>
+                        <thead>
+                            <th id='id' data-column-id="id" data-type="numeric" data-identifier="true" data-visible='false'>id</th>
+                            <th id='direccion' data-column-id="direccion" data-visible='false'>Dirección</th>
+                            <th id='area' data-column-id="area" data-visible='false'>Área</th>
+                            <th id='unidad' data-column-id="unidad" data-visible='false'>Unidad</th>
+                            <th id='criticidad' data-column-id="criticidad" data-visible='false'>Criticidad</th>
+                            <th id='prioridad' data-column-id="prioridad" data-visible='false'>Prioridad</th>
+                            <th id='servicio' data-column-id="servicio">Servicio</th>
+                            <th id='estado' data-column-id="estado">Estado</th>
+                            <th id='elevencert' data-column-id="elevencert">11Cert</th>
+                            <th id='eprivacy' data-column-id="eprivacy">Eprivacy</th>
+                            <th id='jefeproyecto' data-column-id="jefeproyecto">JefeProyecto</th>
+                            <th id='secretoempresarial' data-column-id="secretoempresarial" data-visible='false'>SecretoEmpresarial</th>
+                            <th id='entorno' data-column-id="entorno" data-visible='false'>Entorno</th>
+                            <th id='tenable' data-column-id="tenable" data-visible='false'>Tenable</th>
+                            <th id='dome9' data-column-id="dome9" data-visible='false'>DOME9</th>
+                            <th id='usuarioacceso' data-column-id="usuarioacceso" data-visible='false'>UsuarioAcceso</th>
+                            <th id='revisiones' data-column-id="revisiones" data-visible='false'>Revisiones</th>
+                            <th id='q1' data-column-id="q1" visible="false" data-visible='false'>q1</th>
+                            <th id='q2' data-column-id="q2" visible="false" data-visible='false'>q2</th>
+                            <th id='q3' data-column-id="q3" visible="false" data-visible='false'>q3</th>
+                            <th id='q4' data-column-id="q4" visible="false" data-visible='false'>q4</th>
+                            <th data-column-id="commands" data-formatter="commands" data-sortable="false">Acciones</th>
+                        </thead>
+                        <tbody id='table-plan-data2'>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php getfooter(); ?>
+</body>
+
+</html>

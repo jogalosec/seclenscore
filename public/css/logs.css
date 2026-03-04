@@ -1,0 +1,24 @@
+.list-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  cursor: pointer;
+  color: #007bff;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: none;
+  /* Inicialmente ocultamos las listas */
+}
+
+ul.active {
+  display: block;
+  /* Mostramos la lista cuando está activa */
+}
+
+.tituloLogs {
+  color: #0d6efd;
+}

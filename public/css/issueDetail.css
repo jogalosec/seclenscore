@@ -1,0 +1,60 @@
+.pag-IssueDetail {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.container {
+    margin-top: 0 !important;
+    padding-top: 5rem !important;
+}
+
+.issue-error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+  text-align: center;
+}
+
+.issue-error {
+  font-size: 3rem;
+  color: #e74c3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.issue-error-label {
+  background: #e74c3c;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 2rem;
+}
+
+.issue-error-subtitle {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.issue-error-desc {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.issue-error-btn {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  align-self: center;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

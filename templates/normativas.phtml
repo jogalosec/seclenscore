@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Normativas</title>
+    <?php getheader("Normativas", false) ?>
+    <link rel="stylesheet" href="./css/normativas.css">
+    <script type="module" src="./js/modules/normativas/normativasModule.js" integrity="<?php echo "sha384-" . base64_encode(hash_file('sha384', "./js/modules/normativas/normativasModule.js", true)) ?>" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/styleLoading.css">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class="container">
+        <div class="row mainPage">
+            <div class="col-md-12 d-flex mt-1 mb-3 align-items-center">
+                <h1 class="h1Title me-3 my-auto">Gestión Normativa</h1>
+                <img class="iconoTitulo my-auto" src="./img/Escudo.svg" title="Continuidad" alt="Icono continuidad">
+            </div>
+            <div class='col-12 response mb-3 EVS'>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link pointer active" id="#catalogoNormativas">Catálogo de normativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pointer" id="#catalogoPreguntas">Preguntas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pointer" id="#catalogoUSFs">USFs</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row tab-content" id="catalogoNormativas">
+                <?php insertLoadingDinamic(
+                    "Catálogo Completo de Normativas",
+                    "loadingNormativas"
+                ) ?>
+                <div class="col-12 mt-3">
+                    <button class="btn btn-primary btn-Normativa float-right mshide" id="btn-newNormativa">Crear normativa</button>
+                </div>
+                <div class="col-md-12 mt-4" id="accordionNormativas"></div>
+            </div>
+            <div class="row tab-content mshide" id="catalogoPreguntas">
+                <?php insertLoadingDinamic(
+                    "Catálogo Completo de Preguntas",
+                    "loadingPreguntas"
+                ) ?>
+                <div class="col-12 mt-3">
+                    <button class="btn btn-primary btn-newPregunta float-right mshide" id="btn-newPregunta">Crear pregunta</button>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <table class="table table-condensed table-hover table-striped table-11cert" id='tablaCatalogoPreguntas' data-identifier="ID">
+                        <caption>Catálogo completo de preguntas</caption>
+                        <thead>
+                            <tr>
+                                <th data-column-id="ID" data-header-css-class="IDCol" data-visible="false" data-identifier="true">ID</th>
+                                <th data-column-id="Duda" data-header-css-class="dudaCol">Duda</th>
+                                <th data-column-id="Nivel" data-header-css-class="nivelCol">Nivel</th>
+                                <th data-column-id="Relacion" data-header-css-class="relacionCol">Relación</th>
+                                <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody id='bodyTablaCatalogoPreguntas'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row tab-content mshide" id="catalogoUSFs">
+                <?php insertLoadingDinamic(
+                    "Catálogo Completo de USFs",
+                    "loadingUSFs"
+                ) ?>
+                <div class="col-12 mt-3">
+                    <button class="btn btn-primary btn-newUSF float-right mshide" id="btn-newUSF">Crear USF</button>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <table class="table table-condensed table-hover table-striped table-11cert" id='tablaCatalogoUSFs' data-identifier="ID">
+                        <caption>Catálogo completo de USFs</caption>
+                        <thead>
+                            <tr>
+                                <th data-column-id="ID" data-header-css-class="IDCol" data-visible="false" data-identifier="true">ID</th>
+                                <th data-column-id="Codigo" data-header-css-class="codigoCol">Código</th>
+                                <th data-column-id="Nombre" data-header-css-class="nombreCol">Nombre</th>
+                                <th data-column-id="Descripcion" data-header-css-class="descCol">Descripción</th>
+                                <th data-column-id="Dominio" data-visible="false" data-header-css-class="dominioCol">Dominio</th>
+                                <th data-column-id="Tipo" data-visible="false" data-header-css-class="tipoCol">Tipo</th>
+                                <th data-column-id="Proyecto" data-visible="false" data-header-css-class="proyectoCol">Proyecto</th>
+                                <th data-column-id="Relacion" data-header-css-class="relacionCol">Relación</th>
+                                <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody id='bodyTablaCatalogoUSFs'>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row relacionarControlPage mshide">
+            <div class="col-md-12 d-flex mt-1 mb-3 align-items-center">
+                <h1 class="h1Title me-3 my-auto">Relacionar Control</h1>
+                <img class="iconoTitulo my-auto" src="./img/Recorrido.svg" title="Continuidad" alt="Icono continuidad">
+            </div>
+            <div class="col-12 mb-3">
+                <h3><b>Normativa: </b> <span id="textoNormativa"></span> </h3>
+                <h3><b>Código control: </b> <span id="textoControl"></span> </h3>
+                <h3 class="mshide"><b>Id control: </b> <span id="idControl"></span> </h3>
+                <h3><b>Nombre control: </b> <span id="textoNombre"></span> </h3>
+                <h3><b>Descripción control: </b> <span id="textoDescripcion"></span> </h3>
+            </div>
+            <div class="row opcionesPrincipalesRelacion">
+                <div class='col-12 mb-5'>
+                    <button class="btn btn-secondary float-left" id="btn-volverNormativas">Volver</button>
+                </div>
+                <div class="col-12">
+                    <?php insertLoadingDinamic(
+                        "Relaciones marco normativo",
+                        "loadingRelaciones"
+                    ) ?>
+                    <table class="table table-condensed table-hover table-striped table-11cert" id='tablaMarcoNormativa' data-identifier="ID">
+                        <caption>Catálogo completo de USFs</caption>
+                        <thead>
+                            <tr>
+                                <th data-column-id="ID" data-header-css-class="IDCol" data-visible="false" data-identifier="true">ID</th>
+                                <th data-column-id="CodigoCtrl" data-header-css-class="codigoCtrlCol">Código del control</th>
+                                <th data-column-id="NombreCtrl" data-header-css-class="nombreCtrlCol">Nombre del control</th>
+                                <th data-column-id="CodigoUSF" data-header-css-class="codigoUsfCol">Código del USF</th>
+                                <th data-column-id="NombreUSF" data-header-css-class="nombreUSFCol">Nombre del USF</th>
+                                <th data-column-id="Duda" data-header-css-class="dudaCol">Duda</th>
+                                <th data-column-id="commands" data-header-css-class="editarColRelaciones trTable" data-formatter="commands" data-sortable="false" data-searchable="false"></th>
+                            </tr>
+                        </thead>
+                        <tbody id='bodyTablaMarcoNormativa'>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 mb-3 mt-5 d-flex justify-content-center mshide">
+                    <div class="col-4 d-flex justify-content-center">
+                        <button class="btn btn-primary btn-relacion" id="btn-relacionarControl">Seleccionar USF(s)</button>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+
+                    </div>
+                    <div class="col-4 d-flex justify-content-center">
+                        <button class="btn btn-primary btn-relacion" id="btn-relacionarControl">Crear USF</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row opcionSeleccionarPreguntas mshide">
+                <div class='col-12 mb-5'>
+                    <button class="btn btn-secondary volverOpciones float-left mb-3">Volver</button>
+                    <div class="col-md-12 mt-4">
+                        <?php insertLoadingDinamic(
+                            "Posibles preguntas a relacionar",
+                            "loadingPreguntasRelacion"
+                        ) ?>
+                        <table class="table table-condensed table-hover table-striped table-11cert" id='RelacionarPreguntas'>
+                            <caption>Catálogo completo de preguntas</caption>
+                            <thead>
+                                <tr>
+                                    <th data-column-id="id" data-header-css-class="IDCol" data-visible="false" data-identifier="true">ID</th>
+                                    <th data-column-id="Duda" data-header-css-class="dudaCol">Duda</th>
+                                    <th data-column-id="Nivel" data-header-css-class="nivelCol">Nivel</th>
+                                </tr>
+                            </thead>
+                            <tbody id='bodyTablaRelacionarPreguntas'>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row opcionSeleccionarUSFs mshide">
+                <div class='col-12 mb-5'>
+                    <button class="btn btn-secondary volverOpciones float-left mb-3">Volver</button>
+                    <div class="col-md-12 mt-4">
+                        <?php insertLoadingDinamic(
+                            "Posibles USFs a relacionar",
+                            "loadingUSFsRelacion"
+                        ) ?>
+                    </div>
+                    <div class="col-md-12 mt-4 catalogoUSFsRelacion">
+                        <table class="table table-hover table-striped tabla-USFs table-11cert" id='RelacionesUSFs'>
+                            <caption>Catálogo completo de USFs</caption>
+                            <thead>
+                                <tr>
+                                    <th data-column-id="ID" data-header-css-class="IDCol" data-identifier="true">ID</th>
+                                    <th data-column-id="Codigo" data-header-css-class="codigoCol">Código</th>
+                                    <th data-column-id="Nombre" data-header-css-class="nombreCol">Nombre</th>
+                                    <th data-column-id="Descripcion" data-header-css-class="descCol">Descripción</th>
+                                    <th data-column-id="Dominio" data-header-css-class="dominioCol">Dominio</th>
+                                    <th data-column-id="Tipo" data-header-css-class="tipoCol">Tipo</th>
+                                    <th data-column-id="Proyecto" data-header-css-class="proyectoCol">Proyecto</th>
+                                    <th data-column-id="Relacion" data-header-css-class="relacionCol">Relación</th>
+                                    <th data-column-id="commands" data-header-css-class="editarCol trTable" data-formatter="commands" data-sortable="false" data-searchable="false"></th>
+                                </tr>
+                            </thead>
+                            <tbody id='bodyRelacionesUSFs'>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row opcionSeleccionarPreguntasUSFs mshide">
+                <div class='col-6 mb-5'>
+                    <button class="btn btn-secondary volverOpciones float-left mb-3">Volver</button>
+                </div>
+                <div class='col-6 mb-5'>
+                    <button class="btn btn-primary crearRelacion float-right mb-3">Crear relación</button>
+                </div>
+                <div class="col-md-12 mt-4" id="accordionUSFs"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

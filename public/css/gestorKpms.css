@@ -1,0 +1,79 @@
+#emptyAbiertos, #emptyCerrados {
+    color: rgb(104, 104, 104);
+}
+
+.cartaKPM:hover {
+    background-color: rgb(236, 236, 236);
+    box-shadow: 0 0 10px rgba(78, 78, 78, 0.5);
+}
+
+.cartaKPM:hover, .cartaKPM:hover * {
+    cursor: pointer;
+}
+
+.KPMsAsignados {
+    border-left: 0.5px solid rgb(233, 233, 233);
+}
+
+.KPMsNoAsignados {
+    border-right: 0.5px solid rgb(233, 233, 233);
+}
+
+.toast-body {
+    background-color: #fff;
+}
+
+.toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+}
+
+.toast-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.textToast {
+    color: white;
+    font-size: large;
+}
+
+.toast {
+    border: 1px solid #d5e9fd;
+    box-shadow: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.btn-toast {
+    background-color: #007bff;
+}
+
+#countdown {
+    font-size: medium;
+}
+
+.estado-KPMs {
+    width: auto !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.gap-2 {
+    gap: 10px;
+}
+
+#tablaReportersKPMs th.IDCol,
+#tablaReportersKPMs td.IDCol,
+#tablaReportersKPMs th.emailCol,
+#tablaReportersKPMs td.emailCol,
+#tablaReportersKPMs th.activoCol,
+#tablaReportersKPMs td.activoCol,
+#tablaReportersKPMs th.idActivoCol,
+#tablaReportersKPMs td.idActivoCol,
+#tablaReportersKPMs th.idUserCol,
+#tablaReportersKPMs td.idUserCol {
+    width: 80px;
+}

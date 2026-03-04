@@ -1,0 +1,519 @@
+.update_button {
+  background-color: #0d6efd;
+}
+
+.importderecha {
+  text-align: right;
+}
+
+.error_button {
+  background-color: #8b8b8b;
+  border-color: #8b8b8b;
+}
+
+.error_button:hover {
+  background-color: #8b8b8b;
+  border-color: #8b8b8b;
+}
+
+.issueForm {
+  text-align: left;
+}
+
+.red {
+  color: rgb(255, 98, 98) !important;
+}
+
+.table-issues {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-issues th,
+.table-issues td {
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+  border: none;
+}
+
+.table-issues thead tr th {
+  background-color: #0d6efd;
+}
+
+.table-issues thead tr th:hover {
+  background-color: #3484fc;
+}
+
+.table-issues thead tr th .text {
+  color: white;
+}
+
+.table-issues tbody tr {
+  height: 70px;
+}
+
+.estado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  height: 25px;
+  width: 100px;
+}
+
+.numberEstado {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.abierto {
+  background-color: #e74c3c;
+}
+
+.cerrado {
+  background-color: #27ae60;
+}
+
+.otroEstado {
+  background-color: #9b59b6;
+}
+
+.ID-nombre {
+  font-weight: bold;
+}
+
+.ID-clon {
+  color: grey;
+  font-size: 75%;
+  font-weight: bold;
+}
+
+.custom-header {
+  text-align: center;
+}
+
+.servicioCol {
+  width: 15%;
+}
+
+.fechaInicioCol {
+  width: 10%;
+}
+
+.fechaFinalCol {
+  width: 10%;
+}
+
+.myText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.criticidadCol {
+  width: 8%;
+}
+
+.exposicionCol {
+  width: 9%;
+}
+
+.analisisCol {
+  width: 9%;
+}
+
+.CMMCol {
+  width: 7%;
+}
+
+.editarCol {
+  width: 10%;
+}
+
+.comentarioCol {
+  width: 50%;
+}
+
+.IDCol {
+  width: 15%;
+}
+
+.estadoCol {
+  width: 10%;
+}
+
+.estadoClonadaCol {
+  width: 12%;
+}
+
+.proyectoCol {
+  width: 12%;
+}
+
+.prioridadCol {
+  width: 15%;
+}
+
+.fechaCol {
+  width: 10%;
+}
+
+.list-group {
+  list-style: none;
+}
+
+.titulo {
+  width: 150px;
+}
+
+.btn-spacer {
+  margin-right: 15px;
+}
+
+.btn-delIssue:hover {
+  background-color: #fd0d0d;
+  border-color: #fd0d0d;
+}
+
+.btnDel,
+.btnDEL {
+  background-color: #fd0d0d;
+  border-color: #fd0d0d;
+}
+
+.ID-prioridad {
+  height: 15px;
+}
+
+.low {
+  width: 25%;
+  background-color: #27ae60;
+}
+
+.medium {
+  width: 50%;
+  background-color: #f39c12;
+}
+
+.major {
+  width: 75%;
+  background-color: #e74c3c;
+}
+
+.critical {
+  width: 100%;
+  background-color: #9b59b6;
+}
+
+.btnChange {
+  background-color: #fd0d0d;
+  border-color: #fd0d0d;
+}
+
+.btnCancel {
+  background-color: #8b8b8b;
+  border-color: #8b8b8b;
+}
+
+#suggestionsInformer {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsInformer li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+#suggestionsResponsable {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsResponsable li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+#suggestionsPentest {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 55%;
+  box-sizing: border-box;
+}
+
+#suggestionsPentest li:hover {
+  background-color: rgb(219, 219, 219);
+}
+
+.card {
+  position: relative !important;
+}
+
+.añadirBtn,
+.quitarBtn {
+  width: 10%;
+  height: 10%;
+}
+
+.enlaceIssue,
+.enlaceClonada {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.message {
+  background-color: white;
+}
+
+.msgContent {
+  margin-left: 20px;
+}
+
+.writter {
+  background-color: white;
+}
+
+.writter h6 {
+  font-weight: bold;
+}
+
+.contadores {
+  height: 100px;
+}
+
+.contRegistradas {
+  background-color: #0d6efd;
+}
+
+.contAbiertas {
+  background-color: #e74c3c;
+}
+
+.contCerradas,
+.contSonarqube {
+  background-color: #27ae60;
+}
+
+.contClonadas,
+.contKiuwan {
+  background-color: #9b59b6;
+}
+
+.textContador {
+  font-weight: bold;
+  font-size: 120%;
+  color: white;
+}
+
+.contNum {
+  font-size: 200%;
+}
+
+table.mshide + div.pagination {
+  display: none;
+}
+
+.sombraRegistroSonar {
+  box-shadow: 0px 0px 0px 4px #27ae5fa2;
+}
+
+.sombraRegistroKiuwan {
+  box-shadow: 0px 0px 0px 4px #9c59b69d;
+}
+
+.sombraRegistro {
+  box-shadow: 0px 0px 0px 4px rgba(13, 110, 253, 0.7);
+}
+
+.sombraClonadas {
+  box-shadow: 0px 0px 0px 4px rgba(155, 89, 182, 0.7);
+}
+
+.pentestInfo {
+  text-align: left !important;
+}
+
+.extraPentest {
+  text-align: center !important;
+}
+
+.bold {
+  font-weight: bold !important;
+  color: rgb(56, 56, 56) !important;
+}
+
+.redLabel {
+  color: rgb(196, 1, 1) !important;
+}
+
+.info {
+  height: 20px !important;
+  width: 20px !important;
+}
+
+.img-prueba {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+#calendar {
+  max-width: 800px;
+  margin: 0 auto;
+  height: 600px;
+  display: block;
+}
+
+.calendar-style {
+  overflow: hidden;
+  height: 600px;
+}
+
+.accepted-container {
+  display: none;
+}
+
+.loading-spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#upcomingEventsList {
+  padding: 0;
+  list-style: none;
+}
+
+#upcomingEventsList .list-group-item {
+  margin-bottom: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+#upcomingEventsList .list-group-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#upcomingEventsList .btn-link {
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: #007bff;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#upcomingEventsList .btn-link:hover {
+  text-decoration: underline;
+}
+
+.remove-email-btn {
+  background: none;
+  border: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-email-btn::before,
+.remove-email-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  background-color: #dc3545;
+  transform-origin: center;
+}
+
+.remove-email-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.remove-email-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.remove-email-btn:hover::before,
+.remove-email-btn:hover::after {
+  background-color: #ff0000;
+}
+
+.remove-email-btn:focus {
+  outline: none;
+}
+
+.email-field {
+  margin-bottom: 8px;
+}
+
+.alert-evaluacion-realizada {
+  background-color: #e2edff;
+  padding: 32px 40px;
+  max-width: 850px;
+  margin: 32px auto 0 auto;
+  border-radius: 10px;
+}
+
+.alert-evaluacion-realizada ul {
+  list-style: none;
+}

@@ -1,0 +1,27 @@
+name: Kiuwan Delivery Analysis - Dev
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+  workflow_dispatch:
+
+jobs:
+  kiuwan-baseline:
+    name: Kiuwan Delivery Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Kiuwan Delivery Analysis
+        continue-on-error: false
+        uses: lsacera/KiuwanDeliveryAction@v1.1
+        with:
+          project: 11CERT
+          label: dev-${{ github.run_number }}
+          userid: ${{ secrets.KIUWAN_USER }}
+          password: ${{ secrets.KIUWAN_PASS }}
+          advancedparams: '--domain-id ${{ secrets.KIUWAN_SSO_DOMAIN }}'

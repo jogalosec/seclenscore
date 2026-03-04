@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>ERS - Evaluación de Riesgos</title>
+    <?php getheader("ERS - Evaluación de Riesgos", false) ?>
+    <link rel="stylesheet" href="./css/update.css">
+    <script src="https://code.highcharts.com/highcharts.js" type="text/javascript"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js" type="text/javascript"></script>
+    <script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"></script>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu() ?>
+    <div class='container'>
+        <nav class="ocultarPDF" aria-label="breadcrumb">
+            <ol class="breadcrumb breadlist">
+                <li class="breadcrumb-item active" aria-current="page"><a class="home" href="#">Inicio</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a id="<?php if (isset($id)) {
+                                                                            echo $id;
+                                                                        } else {
+                                                                            echo "null";
+                                                                        } ?>" class="b-item servId" level="2" href="#"> <?php
+                                                                                                                        if (isset($servicio[0]["nombre"])) {
+                                                                                                                            echo $servicio[0]["nombre"];
+                                                                                                                        } else {
+                                                                                                                            echo "null";
+                                                                                                                        } ?></a></li>
+                <li class="breadcrumb-item" aria-current="page"><a class="b-item" level="3" href="./historialservicio?id=<?php
+                                                                                                                            if (isset($id)) {
+                                                                                                                                echo $id;
+                                                                                                                            } else {
+                                                                                                                                echo "null";
+                                                                                                                            } ?>"> Historial</a></li>
+            </ol>
+        </nav>
+        <div class="servicio">
+            <div class="row nombreservicio">
+                <div id="<?php if (isset($id)) {
+                                echo $id;
+                            } else {
+                                echo "null";
+                            } ?>" class="col-12 font-32 servicioId text-center">
+                    <?php if (isset($servicio[0]["nombre"])) {
+                        echo $servicio[0]["nombre"];
+                    } else {
+                        echo "null";
+                    } ?>
+                    <span class="mediaEval">(Calculando media...)</span>
+                </div>
+            </div>
+            <div class="row selectores">
+                <div class="col-4 selectorSys">
+                    <select class="form-select-custom sistemaEval">
+                        <?php
+                        if (isset($servicio[0])) {
+                            $activos = $db->getTree($servicio[0]);
+                        }
+                        if (isset($activos)) {
+                            $sistemas = getActivoByTipo($activos, 33);
+                        }
+                        if (isset($sistemas)) {
+                            sort($sistemas);
+                        }
+                        $optionval = "<option value='";
+                        $optionclose = "</option>";
+                        $selected = "' selected>";
+
+                        foreach ($sistemas as $sistema) {
+                            if ($sistema["archivado"] == "1") {
+                                $archivado = "disabled";
+                            } else {
+                                $archivado = '';
+                            }
+                            echo $optionval . $sistema["id"] . "' $archivado>" . $sistema["nombre"] . $optionclose;
+                        }
+
+                        ?>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <select class="form-select-custom fechaEval">
+                    </select>
+                </div>
+                <div class='col-auto'>
+                    <button class="btn btn-default btn-editarecr editar-eval"><img class="icono editar-eval" alt="Editar" title="Editar evaluación" src="./img/edit.svg"></button>
+                </div>
+                <div class='col-auto'>
+                    <button class="btn btn-default btn-downloadeval download-eval"><img class="icono" alt="Descargar evaluación" title="Descargar evaluación" src="./img/download.svg"></button>
+                </div>
+                <div class='col-auto'>
+                    <button class="btn btn-default btn-verpac"><img class="icono ver-pac" alt="Ver PAC" title="Ver PAC" src="./img/analitica.svg"></button>
+                </div>
+            </div>
+        </div>
+        <div class="ExportERS">
+            <div class='row heatmap'>
+                <div class='row col-12 tarjeta-riesgo'>
+                    <div class="col-4">
+                        <label for="exampleFormControlSelect1">Confidencialidad</label>
+                        <?php
+                        if (isset($id)) {
+                            $bia = $db->getBia($id);
+                        }
+                        if (isset($bia)) {
+                            $resultadobia = calcularBia($bia);
+                        }
+
+                        $niveles = array(0 => 'Muy bajo', 1 => 'Bajo', 2 => 'Medio', 3 => 'Alto', 4 => 'Muy alto');
+                        ?>
+                        <select class="form-select-custom con select-riesgo" id="select-conf">
+                            <?php
+                            $confcount = 0;
+                            if (isset($niveles)) {
+                                foreach ($niveles as $nivel) {
+                                    if (isset($resultadobia) && $resultadobia['Con']['Max'] ==  $confcount) {
+                                        echo $optionval . $confcount . $selected . $nivel . $optionclose;
+                                    } else {
+                                        echo $optionval . $confcount . "'>" . $nivel . $optionclose;
+                                    }
+                                    $confcount++;
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleFormControlSelect1">Integridad</label>
+                        <select class="form-select-custom int select-riesgo" id="select-int">
+                            <?php
+                            $confcount = 0;
+                            if (isset($niveles)) {
+                                foreach ($niveles as $nivel) {
+                                    if (isset($resultadobia) && $resultadobia['Int']['Max'] ==  $confcount) {
+                                        echo $optionval . $confcount . $selected . $nivel . $optionclose;
+                                    } else {
+                                        echo $optionval . $confcount . "'>" . $nivel . $optionclose;
+                                    }
+                                    $confcount++;
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="exampleFormControlSelect1">Disponibilidad</label>
+                        <select class="form-select-custom dis select-riesgo" id="select-disp">
+                            <?php
+                            $confcount = 0;
+                            if (isset($niveles)) {
+                                foreach ($niveles as $nivel) {
+                                    if (isset($resultadobia) && $resultadobia['Dis']['Max'] ==  $confcount) {
+                                        echo $optionval . $confcount . $selected . $nivel . $optionclose;
+                                    } else {
+                                        echo $optionval . $confcount . "'>" . $nivel . $optionclose;
+                                    }
+                                    $confcount++;
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id='heatmap-inherit' class='col-4'></div>
+                    <div id='heatmap-now' class='col-4'></div>
+                    <div id='heatmap-residual' class='col-4'></div>
+                </div>
+            </div>
+            <div class="tablaAmenazas tarjeta">
+                <table id="grid-basic" class="table table-condensed table-hover table-striped table-11cert">
+                    <caption>Tabla de estado de amenazas del sistema.</caption>
+                    <thead>
+                        <tr>
+                            <th data-column-id="familia" id="familia">FAMILIA ACTIVO</th>
+                            <th data-column-id="activo" id="activo">ACTIVO</th>
+                            <th data-column-id="cod" id="cod">COD.AMENAZA</th>
+                            <th data-column-id="amenaza" id="amenaza">AMENAZA</th>
+                            <th data-column-id="prob" id="prob">PROBABILIDAD</th>
+                            <th data-column-id="imp" id="imp">IMPACTO</th>
+                            <th data-column-id="estado" id="estado">RIESGO</th>
+                            <th data-column-id="status" data-type="numeric" data-visible="false" id="status">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id='grid-data'>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class='ExportECR'>
+            <div class="tablausf tarjeta">
+                <table id="grid-basic2" class="table table-condensed table-hover table-striped table-11cert">
+                    <caption>Tabla de estado de controles del sistema.</caption>
+                    <thead>
+                        <tr>
+                            <th data-column-id="codUSF" id='codUSF'>COD</th>
+                            <th data-column-id="domUSF" id="domUSF">DOMINIO</th>
+                            <th data-column-id="descripcionUSF" id="descripcionUSF">DESC.</th>
+                            <th data-column-id="estadoUSFnum" id="estadoUSFnum">ESTADO Num.</th>
+                            <th data-column-id="estadoUSFstring" id="estadoUSFstring">ESTADO</th>
+                            <th data-column-id="pac" id="pac">PAC</th>
+                        </tr>
+                    </thead>
+                    <tbody id='grid-data2'>
+                    </tbody>
+                </table>
+            </div>
+            <div class='row historialservicio'>
+            </div>
+        </div>
+
+        <div class='ExportPAC'>
+            <div class="row pac">
+            </div>
+        </div>
+
+        <div class="row menu-bottom">
+            <div class="col-12 text-left">
+                <button class="btn btn-primary btn-ecr">Generar ECR</button>
+                <button class="btn btn-primary btn-ers">Generar ERS</button>
+                <button class="btn btn-primary btn-pac">Generar PAC</button>
+            </div>
+        </div>
+    </div>
+    <?php getfooter(); ?>
+</body>
+
+</html>

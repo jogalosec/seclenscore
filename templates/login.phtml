@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Login</title>
+    <?php getheader("Login", false, true) ?>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <?php getmenu(false, false) ?>
+    <div class="container d-flex justify-content-center flex-shrink-0">
+        <div class="row">
+            <div class="mk-sm-container m-t-60 text-center">
+                <div class="mb-6 title-app">
+                    11Cert
+                </div>
+                <div class="mk-lightgrey-box m-t-20 text-center">
+                    <form class="form-login" action="./auth" method="post" accept-charset="utf-8">
+                        <div class="mb-3">
+                            <input class="login-sso-btn" type="image" src="./img/login_365.gif" alt="Submit">
+                        </div>
+                        <div class="pointer showlocal mb-3">
+                            O inicia sesión con usuario local.
+                        </div>
+                        <div class="local mshide">
+                            <div class="mb-3">
+                                <div class="custom-input">
+                                    <input id="login-email" class="form-control" type="email" placeholder="" name="email" autocomplete="email">
+                                    <label for="login-email" class="custom-input-label">Email</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="custom-input">
+                                    <input id="password-login" class="form-control" type="password" autocomplete="off" placeholder="" name="password" autocomplete="password">
+                                    <label for="password-login" class="custom-input-label">Contraseña</label>
+                                </div>
+                            </div>
+                            <div id="recaptcha-container" style="display:none; margin-bottom: 10px;"></div>
+                            <div class="form-action m-b-20 ">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-20">
+                                    <input class="btn btn-primary btn-login" type="submit" value="Iniciar sesión">
+                                </div>
+                            </div>
+                            <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                            <input type="hidden" name="recaptcha_v2" id="recaptcha_v2_flag" value="false">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php getfooter() ?>
+</body>
+
+</html>
