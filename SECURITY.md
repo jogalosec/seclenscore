@@ -14,7 +14,7 @@ Use this section to guide users on how to report a vulnerability.
 
 Please follow these steps to report a vulnerability:
 
-1. Go to the [Issues](https://github.com/Telefonica/11cert/issues) section of our GitHub repository.
+1. Go to the [Issues] section of our GitHub repository.
 2. Click on the "New Issue" button.
 3. Provide a clear and detailed description of the vulnerability, including steps to reproduce it.
 4. If possible, attach any relevant code or screenshots to help us understand the issue better.
