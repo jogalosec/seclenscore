@@ -1,0 +1,69 @@
+/* ---------------------------------------------------------------
+   SecLensCore — Estilos globales
+   Migrado del sistema PHP (servicios.phtml, login.phtml, etc.)
+--------------------------------------------------------------- */
+
+:root {
+  --color-primary:    #0d6efd;
+  --color-secondary:  #6c757d;
+  --color-danger:     #dc3545;
+  --color-success:    #198754;
+  --font-family:      'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  min-height: 100vh;
+}
+
+/* Contenedor pequeño centrado (login, páginas de error) */
+.mk-sm-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 1rem;
+}
+
+/* Caja gris claro (tarjeta del formulario de login) */
+.mk-lightgrey-box {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+/* Título grande de la aplicación */
+.title-app {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -1px;
+}
+
+/* Input con label flotante */
+.custom-input {
+  position: relative;
+}
+.custom-input .form-control {
+  padding-top: 1.2rem;
+  padding-bottom: 0.4rem;
+}
+.custom-input .custom-input-label {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+.custom-input .form-control:not(:placeholder-shown) ~ .custom-input-label,
+.custom-input .form-control:focus ~ .custom-input-label {
+  top: 0.2rem;
+  font-size: 0.65rem;
+}
+
+/* Botón SSO */
+.login-sso-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
