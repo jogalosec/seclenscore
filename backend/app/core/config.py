@@ -67,6 +67,12 @@ class Settings(BaseSettings):
     PRISMA_USER: str = ""
     PRISMA_PASSWORD: SecretStr = SecretStr("")
 
+    # ----- Kiuwan -----
+    KIUWAN_BASE_URL: str = "https://api.kiuwan.com"
+    KIUWAN_USERNAME: str = ""
+    KIUWAN_PASSWORD: SecretStr = SecretStr("")
+    KIUWAN_DOMAIN_ID: str = ""
+
     # ----- Entorno -----
     APP_ENV: str = "development"
     APP_VERSION: str = "2.0.0"

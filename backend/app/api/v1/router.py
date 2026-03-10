@@ -35,3 +35,8 @@ api_router.include_router(jira_router.router)
 from app.api.v1.routers import dashboard, logs
 api_router.include_router(dashboard.router)
 api_router.include_router(logs.router)
+
+# Sprint 7 — Kiuwan / SDLC + Misceláneos
+from app.api.v1.routers import kiuwan_sdlc, misc_router
+api_router.include_router(kiuwan_sdlc.router)
+api_router.include_router(misc_router.router)

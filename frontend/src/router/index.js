@@ -141,6 +141,12 @@ const routes = [
     meta: { requiresAuth: true, titulo: 'Normativas' },
   },
   {
+    path: '/sdlc',
+    name: 'sdlc',
+    component: () => import('@/views/SdlcView.vue'),
+    meta: { requiresAuth: true, titulo: 'SDLC — Análisis de código' },
+  },
+  {
     path: '/logs',
     name: 'logs',
     component: () => import('@/views/LogsView.vue'),
