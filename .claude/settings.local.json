@@ -4,8 +4,7 @@
       "Bash(wc -l c:/seclenscore/frontend/src/views/*.vue)",
       "Bash(du -sh /c/seclenscore/includes/*)",
       "Bash(find /c/seclenscore -name \"*.phtml\" -exec wc -l {} +)",
-      "Bash(grep -E \"\\\\.\\(json|lock|ini|conf|yaml|yml\\)$\")",
-      "Bash(du -sh /c/seclenscore/public/index.php /c/seclenscore/includes/*.php /c/seclenscore/App/Middleware/*.php)"
+      "Bash(grep -E \"\\\\.\\(json|lock|ini|conf|yaml|yml\\)$\")"
     ]
   }
 }
