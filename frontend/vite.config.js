@@ -27,7 +27,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vue-core': ['vue', 'vue-router', 'pinia'],
-          'primevue': ['primevue', 'primeicons'],
+          'primevue': ['primevue'],
           'axios':    ['axios'],
         },
       },
